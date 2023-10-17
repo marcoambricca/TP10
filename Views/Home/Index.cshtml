@@ -1,0 +1,47 @@
+﻿<div class="titulo">
+  <h1>Bienvenido a series Jorgito</h1>
+</div>
+
+
+<div class="container-fluid">
+  <ul>
+  @{
+    for(int i = 0; i<ViewBag.series.Count; i++){
+      <li>
+        <div class="card" style="width: 22rem;">
+          <img class="card-img-top" src="@ViewBag.series[i].ImagenSerie" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">@ViewBag.series[i].Nombre</h5>
+            <p class="card-text">@ViewBag.series[i].Sinopsis</p>
+              <div class="card-buttons">
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Modalinformacion" onclick="MostrarActores(@ViewBag.series[i].IdSerie)">Actores</a>
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Modalinformacion" onclick="MostrarTemporadas(@ViewBag.series[i].IdSerie)">Temporadas</a>
+                <a href="#" class="btn btn-primary" style="padding-top: 1%" data-toggle="modal" data-target="#Modalinformacion" onclick="MostrarInfo(@ViewBag.series[i].IdSerie)">Mas info</a>
+              </div>
+          </div>
+        </div>
+      </li>
+      
+    }
+  }
+  </ul>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="Modalinformacion">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="titulo"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="informacion"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
